@@ -11,7 +11,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { TermConditionsComponent } from './term-conditions/term-conditions.component';
-import {UsersComponent} from "./users/users.component";
+
 
 import {OfferComponent} from "./stage/offer/offer.component";
 import {OfferStaffComponent} from "./stage/offerStaff/offer-Staff.component";
@@ -23,7 +23,13 @@ import {MesofferAdminComponent} from "./stage/mesofferAdmin/mesoffer-Admin.compo
 import {OfferAdminComponent} from "./stage/offerAdmin/offer-Admin.component";
 import {ApplicationComponent} from "./stage/application/application.component";
 import { MagasinComponent } from './magasin/magasin.component';
-import { PieceComponent } from '../ecommerce/piece/piece.component';
+
+import { UsersComponent } from './stage/users/users.component';
+import { RegroupementComponent } from './stage/regroupement/regroupement.component';
+import { FiltercvComponent } from './stage/filtercv/filtercv.component';
+import { PredictionsalaireComponent } from './stage/predictionsalaire/predictionsalaire.component';
+import { CondidatComponent } from './stage/condidat/condidat.component';
+import { RhComponent } from './stage/rh/rh.component';
 
 
 const routes: Routes = [
@@ -65,8 +71,18 @@ const routes: Routes = [
     component: TermConditionsComponent
   },
   {
-    path: 'users',
+    path: 'recruteur',
    component: UsersComponent
+
+  },
+  {
+    path: 'condidat',
+   component: CondidatComponent
+
+  },
+  {
+    path: 'rh',
+   component: RhComponent
 
   },
 
@@ -114,9 +130,18 @@ const routes: Routes = [
     component:  ApplicationComponent
   },
   {
-    path: 'magasin',
-    component:  MagasinComponent
+    path: 'regroupement',
+    component:  RegroupementComponent
   },
+  {
+    path: 'filtercv',
+    component:  FiltercvComponent
+  },
+  {
+    path: 'prediction',
+    component:  PredictionsalaireComponent
+  },
+ 
 
 
 ];

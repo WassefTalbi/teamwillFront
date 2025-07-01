@@ -86,16 +86,19 @@ export class AuthenticationService {
             })
         );
     }
-  registerUser(firstName: string, lastName: string, email: string, password: string, mobileNumber: string,profession: string) {
-    return this.http.post<any>(AUTH_API + 'register', { firstName, lastName, email, password, mobileNumber ,profession });
+  registerUser(firstName: string, lastName: string, email: string, password: string, mobileNumber: string) {
+    return this.http.post<any>(AUTH_API + 'register', { firstName, lastName, email, password, mobileNumber  });
   }
-  registerStaff(firstName: string, lastName: string, email: string, password: string, mobileNumber: string,profession: string) {
-    return this.http.post<any>(AUTH_API + 'registerStaff', { firstName, lastName, email, password, mobileNumber ,profession });
+  registerRecruteur(registerData:any) {
+    return this.http.post<any>(AUTH_API + 'registerRecruteur', registerData);
+  }
+  registerRh(registerData:any) {
+    return this.http.post<any>(AUTH_API + 'registerRh', registerData);
+  }
+  registerCondidat(registerData:any) {
+    return this.http.post<any>(AUTH_API + 'register', registerData);
   }
 
-  registerCompany(companyName: string, companyAddress: string, email: string, password: string, mobileNumber: string,profession: string) {
-    return this.http.post<any>(AUTH_API + 'registerCompany', { companyName, companyAddress, email, password, mobileNumber ,profession });
-  }
  
   login(username: string, password: string): Observable<any> {
     return this.http.post<any>(AUTH_API+`login`, { username, password }).pipe(
@@ -153,13 +156,17 @@ export class AuthenticationService {
     const currentUser = this.currentUser();
     return currentUser && currentUser['scope'] === 'USER';
   }
-  isStaff(): boolean {
+  isCondidat(): boolean {
     const currentUser = this.currentUser();
-    return currentUser && currentUser['scope'] === 'STAFF';
+    return currentUser && currentUser['scope'] === 'CONDIDAT';
   }
-  isCompany(): boolean {
+  isRh(): boolean {
     const currentUser = this.currentUser();
-    return currentUser && currentUser['scope'] === 'COMPANY';
+    return currentUser && currentUser['scope'] === 'RH';
+  }
+  isRecruteur(): boolean {
+    const currentUser = this.currentUser();
+    return currentUser && currentUser['scope'] === 'RECRUTEUR';
   }
   /* public currentUser(): any {
        return getFirebaseBackend()!.getAuthenticatedUser();

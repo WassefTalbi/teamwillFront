@@ -32,7 +32,7 @@ export class HorizontalTopbarComponent {
 
   initialize(): void {
     console.log('User Role: ', this.userConnected.scope);
-    if (this.userConnected.scope=== 'USER') {
+    if (this.userConnected.scope=== 'CONDIDAT') {
       this.menuItems = MENU1.clientMenu;
     } else if (this.userConnected.scope === 'COMPANY') {
       this.menuItems = MENU1.companyMenu;

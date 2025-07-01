@@ -7,28 +7,125 @@ export const MENU: MenuItem[] = [
     label: 'MENUITEMS.MENU.TEXT',
     isTitle: true
   },
-
+/*utilisateur*/
+ 
   {
     id: 2,
     label: 'Utilisateur',
-    icon: 'ri-apps-line',
-    link: '/pages/users',
-    parentId: 8
+    icon: 'ph-gauge',
+    subItems: [
+      {
+        id: 2,
+        label: 'Recruteur',
+        icon: 'ph-storefront',
+        link: '/pages/recruteur',
+        parentId: 2
+      },
+      {
+        id: 4,
+        label: 'ressources humaines',
+        link: '/pages/rh',
+        parentId: 2
+      },
+      {
+        id: 4,
+        label: 'Condidat',
+        link: '/pages/condidat',
+        parentId: 2
+      }
+    ]
   },
- 
+
+  /*dashboard Bi*/
   {
     id: 3,
+    label: 'Dashboard BI',
+    icon: 'ph-gauge',
+    subItems: [
+      {
+        id: 2,
+        label: 'Dashboard BI 1',
+        icon: 'ph-storefront',
+        link: '/Dashboard/BI1',
+        parentId: 3
+      },
+      {
+        id: 4,
+        label: 'Dashboard BI 2',
+        link: '/Dashboard/BI2',
+        parentId: 3
+      },
+      {
+        id: 4,
+        label: 'Dashboard BI 3',
+        link: '/Dashboard/BI3',
+        parentId: 3
+      }
+    ]
+  },
+ /*recrutement*/
+  {
+    id: 4,
     label: 'Recrutement',
+    icon: 'ph-gauge',
+    subItems: [
+      {
+        id: 2,
+        label: 'Entretiens',
+        icon: 'ph-storefront',
+        link: '/ecommerce/piece',
+        parentId: 8
+      },
+      {
+        id: 4,
+        label: 'postulations',
+        link: '/pages/applications',
+        parentId: 2
+      }
+    ]
+  },
+  /*offre*/
+  {
+    id: 2,
+    label: 'Offres',
+    icon: 'ph-gauge',
+    subItems: [
+      {
+        id: 2,
+        label: 'Mes Offres',
+        icon: 'ri-apps-line',
+        link: '/pages/mesofferAdmin',
+        parentId: 8
+      },
+      {
+        id: 4,
+        label: 'Liste des offres  ',
+        link: '/pages/offerAdmin',
+        parentId: 2
+      }
+    ]
+  },
+  /*modeling*/
+  {
+    id: 5,
+    label: 'Filter CV',
     icon: 'ph-storefront',
-    link: '/ecommerce/piece',
-    parentId: 8
+    link: '/pages/filtercv',
+    
   },
   {
-    id: 3,
-    label: 'Entretien',
+    id: 6,
+    label: 'Prédiction de salaire',
     icon: 'ph-storefront',
-    link: '/tickets/list',
-    parentId: 8
+    link: '/pages/prediction',
+    
+  },
+  {
+    id: 7,
+    label: 'Regroupement',
+    icon: 'ph-storefront',
+    link: '/pages/regroupement',
+   
   },
 
   /*

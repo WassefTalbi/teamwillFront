@@ -43,6 +43,15 @@ export class UserProfileService {
   getAllUsers(): Observable<User> {
     return this.http.get(API_URL+USER+`all`);
   }
+  getAllRecruteur(): Observable<User> {
+    return this.http.get(API_URL+USER+`allRecruteur`);
+  }
+  getAllRh(): Observable<User> {
+    return this.http.get(API_URL+USER+`allRh`);
+  }
+  getAllCondidat(): Observable<User> {
+    return this.http.get(API_URL+USER+`allCondidat`);
+  }
 
 
   blockUser(id: number): Observable<User> {
@@ -92,6 +101,9 @@ export class UserProfileService {
 
   getUserById(id: number): Observable<any> {
     return this.http.get(API_URL+ USER +`${id}`);
+  }
+  public removeUser(idUser:number):Observable<any> {
+    return this.http.delete(API_URL+USER+"delete/"+idUser);
   }
 
 

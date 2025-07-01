@@ -35,6 +35,9 @@ import {RouterLink} from "@angular/router";
 import {SimplebarAngularModule} from "simplebar-angular";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
 import {UiSwitchModule} from "ngx-ui-switch";
+import { UsersComponent } from './stage/users/users.component';
+import { RhComponent } from './stage/rh/rh.component';
+import { CondidatComponent } from './stage/condidat/condidat.component';
 
 
 
@@ -56,6 +59,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     PricingComponent,
     PrivacyPolicyComponent,
     TermConditionsComponent,
+    UsersComponent,RhComponent,CondidatComponent
     
   ],
   imports: [

@@ -9,7 +9,7 @@ import { UserProfileService } from 'src/app/core/services/user.service';
 import { Register } from 'src/app/store/Authentication/authentication.actions';
 import {chatMessagesData} from "../../pages/forms/advance/data";
 import {HttpErrorResponse} from "@angular/common/http";
-
+import { ToastrService } from 'ngx-toastr'; 
 
 @Component({
   selector: 'app-register',
@@ -20,11 +20,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 // Register Component
 export class RegisterComponent {
   role: string = '';
-  showCard: boolean = true;
-  setRole(newRole: 'student' | 'staff' | 'company'): void {
-    this.role = newRole;
-    this.showCard = false;
-  }
+ 
   // Login Form
   signupForm!: UntypedFormGroup;
   submitted = false;
@@ -35,7 +31,7 @@ export class RegisterComponent {
   passwordError = '';
   firstNameError = '';
   lastNameError = '';
-  professionError='';
+  
 
   // set the current year
   year: number = new Date().getFullYear();
@@ -44,7 +40,7 @@ export class RegisterComponent {
 
   searchTerm: string = '';
   constructor(private formBuilder: UntypedFormBuilder,    private authService:AuthenticationService,
-              private router: Router,) { }
+              private router: Router,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     /**
@@ -56,7 +52,7 @@ export class RegisterComponent {
       lastName: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.pattern('(?=.*[a-z])'), Validators.pattern('(?=.*[A-Z])'), Validators.pattern('(?=.*\\d)'), Validators.minLength(8)]],
       mobileNumber: ['', Validators.required],
-      profession: ['', Validators.required]
+     
     });
   }
 
@@ -116,17 +112,14 @@ export class RegisterComponent {
     this.searchTerm = searchValue;
     this.filterCountries();
   }
-  onSubmitRole(){
-    this.submittedRole = true;
-    this.showCard = false;
-  }
+
 onSubmit() {
   this.submitted = true;
   this.emailError = '';
   this.passwordError = '';
   this.firstNameError = '';
   this.lastNameError = '';
-  this.professionError = '';
+
   const fmobileNumber = this.f['mobileNumber'].value;
   let countryCode = this.selectedCountry.countryCode;
   let mobileNumber = `${countryCode} ${fmobileNumber}`;
@@ -134,11 +127,15 @@ onSubmit() {
   const lastName = this.f['lastName'].value;
   const email = this.f['email'].value;
   const password = this.f['password'].value;
-  const profession = this.f['profession'].value;
+
 
   // Call AuthService method to register user
-  this.authService.registerUser(firstName, lastName, email, password, mobileNumber,profession).subscribe(
+  this.authService.registerUser(firstName, lastName, email, password, mobileNumber).subscribe(
     (response) => {
+      this.toastr.success(
+        'Enregistrement réussi ! Vous devez accéder à votre mail pour activer votre compte.',
+        'Succès'
+      );
       this.router.navigate(['/auth/login']);
       console.log('User registered successfully:', response);
     },
@@ -164,103 +161,14 @@ onSubmit() {
   );
 
 }
-onSubmitStaff() {
-  this.submitted = true;
-  this.emailError = '';
-  this.passwordError = '';
-  this.firstNameError = '';
-  this.lastNameError = '';
-  this.professionError = '';
-  const fmobileNumber = this.f['mobileNumber'].value;
-  let countryCode = this.selectedCountry.countryCode;
-  let mobileNumber = `${countryCode} ${fmobileNumber}`;
-  const firstName = this.f['firstName'].value;
-  const lastName = this.f['lastName'].value;
-  const email = this.f['email'].value;
-  const password = this.f['password'].value;
-  const profession = this.f['profession'].value;
 
-  // Call AuthService method to register user
-  this.authService.registerStaff(firstName, lastName, email, password, mobileNumber,profession).subscribe(
-    (response) => {
-      this.router.navigate(['/auth/login']);
-      console.log('User registered successfully:', response);
-    },
-    (error) => {
-      if (error.status === 400) {
-        if (error.error.firstName || error.error.lastName || error.error.password || error.error.email) {
-          this.firstNameError = error.error.firstName;
-          this.lastNameError = error.error.lastName;
-          this.passwordError = error.error.password;
-          this.emailError = error.error.email;
-          console.log(error.error.email)
-        }
-      } else if(error.status === 500){
-        if (error.error.error === 'Email already exists') {
-          this.emailError = 'Email already exists';
-        }else {
-          console.log('An unexpected error occurred:', error);
-        }
-      } else {
-        console.log('An unexpected error occurred:', error);
-      }
-    }
-  );
-
-}
-onSubmitCompnay() {
-  this.submitted = true;
-  this.emailError = '';
-  this.passwordError = '';
-  this.firstNameError = '';
-  this.lastNameError = '';
-  this.professionError = '';
-  const fmobileNumber = this.f['mobileNumber'].value;
-  let countryCode = this.selectedCountry.countryCode;
-  let mobileNumber = `${countryCode} ${fmobileNumber}`;
-  const companyName = this.f['firstName'].value;
-  const companyAddress = this.f['lastName'].value;
-  const email = this.f['email'].value;
-  const password = this.f['password'].value;
-  const profession = this.f['profession'].value;
-
-  // Call AuthService method to register user
-  this.authService.registerCompany(companyName, companyAddress, email, password, mobileNumber,profession).subscribe(
-    (response) => {
-      this.router.navigate(['/auth/login']);
-      console.log('User registered successfully:', response);
-    },
-    (error) => {
-      if (error.status === 400) {
-        if (error.error.firstName || error.error.lastName || error.error.password || error.error.email) {
-          this.firstNameError = error.error.firstName;
-          this.lastNameError = error.error.lastName;
-          this.passwordError = error.error.password;
-          this.emailError = error.error.email;
-          console.log(error.error.email)
-        }
-      } else if(error.status === 500){
-        if (error.error.error === 'Email already exists') {
-          this.emailError = 'Email already exists';
-        }else {
-          console.log('An unexpected error occurred:', error);
-        }
-      } else {
-        console.log('An unexpected error occurred:', error);
-      }
-    }
-  );
-
-}
   /**
  * Password Hide/Show
  */
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
   }
-  toggleCardVisibility(): void {
-    this.showCard = !this.showCard;
-  }
+ 
 
-  //  protected readonly Default = chatMessagesData;
+
 }

@@ -8,9 +8,9 @@
                         <div 
                           class="card auth-card bg-secondary h-100 d-sm-block mb-0" 
                           style="
-                            background-image: url('https://www.teamwillgroup.com/wp-content/uploads/2025/06/10-1-scaled.png'); 
-                            background-size: contain;  
-                            background-position: center; 
+                           background-image: url('assets/images/teamlg.png'); 
+                          background-size: cover;
+                          background-position: center;
                             
                           "
                         >
@@ -39,57 +39,7 @@
                         <!--end col-->
                       <div class="col-xxl-6 mx-auto">
                         <div class="card mb-0 border-0 shadow-none mb-0">
-
-
-
-
-
-                          <div *ngIf="showCard" class="card-body p-sm-5 m-lg-4">
-                            <div class="text-center mt-5">
-                              <h5 class="fs-3xl">Create your free account</h5>
-                              <p class="text-muted">Get your free Steex account now</p>
-                            </div>
-                            <div class="p-2 mt-5">
-                              <form (ngSubmit)="onSubmitRole()">
-                              <div class="position-container">
-                                <div class="form-check mb-3">
-                                  <input class="form-check-input" type="radio" id="student" name="role" [(ngModel)]="role" value="student">
-                                  <label class="form-check-label" for="student">Student</label>
-                                </div>
-                                <div class="form-check mb-3">
-                                  <input class="form-check-input" type="radio" id="staff" name="role" [(ngModel)]="role" value="staff">
-                                  <label class="form-check-label" for="staff">Staff</label>
-                                </div>
-                                <div class="form-check mb-3">
-                                  <input class="form-check-input" type="radio" id="company" name="role" [(ngModel)]="role" value="company">
-                                  <label class="form-check-label" for="company">Company</label>
-                                </div>
-                                <div class="mt-4">
-                                  <button class="btn btn-primary w-100" type="submit">Pick Your Position</button>
-                                </div>
-                              </div>
-                              </form>
-
-                            </div>
-
-                            <div class="mt-4 pt-2 text-center">
-                              <div class="signin-other-title position-relative">
-                                <h5 class="fs-sm mb-4 title">Sign In with</h5>
-                              </div>
-                              <div class="pt-2 hstack gap-2 justify-content-center">
-                                <button type="button" class="btn btn-subtle-primary btn-icon"><i class="ri-facebook-fill fs-lg"></i></button>
-                                <button type="button" class="btn btn-subtle-danger btn-icon"><i class="ri-google-fill fs-lg"></i></button>
-                                <button type="button" class="btn btn-subtle-dark btn-icon"><i class="ri-github-fill fs-lg"></i></button>
-                                <button type="button" class="btn btn-subtle-info btn-icon"><i class="ri-twitter-fill fs-lg"></i></button>
-                              </div>
-                            </div>
-                            <div class="mt-4 text-center">
-                              <p class="mb-0">Already have an account ? <a routerLink="/auth/login" class="fw-semibold text-primary text-decoration-underline"> Signin </a> </p>
-                            </div>
-
-                          </div>
-
-                          <div *ngIf="!showCard && role === 'student'" class="card-body p-sm-5 m-lg-4">
+                          <div  class="card-body p-sm-5 m-lg-4">
                             <div class="text-center mt-2">
                               <h5 class="fs-3xl">Create your free account</h5>
                               <p class="text-muted">Get your free Steex account now</p>
@@ -169,13 +119,7 @@
                                   </div>
                                 </div>
 
-                                <div class=" mb-3">
-                                  <label for="profession" class="form-label">Profession <span class="text-danger">*</span></label>
-                                  <input type="text" class="form-control" id="profession" placeholder="Enter profession" required formControlName="profession" [ngClass]="{ 'is-invalid': submitted && f['profession'].errors }">
-                                  <div *ngIf="professionError" class="alert alert-danger mt-1" role="alert">
-                                    {{ professionError }}
-                                  </div>
-                                </div>
+                                
 
                                 <div class="mb-4">
                                   <p class="mb-0 fs-xs text-muted fst-italic">By registering you agree to the Steex <a routerLink="/pages/term-conditions" class="text-primary text-decoration-underline fst-normal fw-medium">Terms of Use</a></p>
@@ -202,235 +146,9 @@
                                     <div class="mt-4 text-center">
                                         <p class="mb-0">Already have an account ? <a routerLink="/auth/login" class="fw-semibold text-primary text-decoration-underline"> Signin </a> </p>
                                     </div>
-                                </div>
-                          <div *ngIf="!showCard && role === 'staff'" class="card-body p-sm-5 m-lg-4">
-                            <div class="text-center mt-2">
-                              <h5 class="fs-3xl">Create your free account</h5>
-                              <p class="text-muted">Get your free Steex account now</p>
-                            </div>
-                            <div class="p-2 mt-5">
-                              <form [formGroup]="signupForm" (ngSubmit)="onSubmitStaff()" class="needs-validation" novalidate action="index.html">
-
-                                <div class="row">
-                                  <div class="col-md-6 mb-3">
-                                    <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="Enter first name" required formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }">
-                                    <div *ngIf="firstNameError" class="alert alert-danger mt-1" role="alert">
-                                      {{ firstNameError }}
-                                    </div>
-                                  </div>
-
-                                  <div class="col-md-6 mb-3">
-                                    <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="Enter last name" required formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
-                                    <div *ngIf="lastNameError" class="alert alert-danger mt-1" role="alert">
-                                      {{ lastNameError }}
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div class="mb-3">
-                                  <label for="useremail" class="form-label">Email <span class="text-danger">*</span></label>
-                                  <input type="email" class="form-control" id="useremail" placeholder="Enter email address" required formControlName="email" [ngClass]="{ 'is-invalid': submitted && !f['password'].errors }">
-                                  <div *ngIf="emailError" class="alert alert-danger mt-1" role="alert">
-                                    {{ emailError }}
-                                  </div>
-
-                                </div>
-
-                                <div class="mb-3">
-                                  <label class="form-label" for="password-input">Password <span class="text-danger">*</span></label>
-
-                                  <div class="position-relative auth-pass-inputgroup">
-
-                                    <input [type]="fieldTextType ? 'text' : 'password'" class="form-control password-input pe-5" placeholder="Enter password" id="password-input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors}">
-
-                                    <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle" [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType
-                            }" (click)="toggleFieldTextType()"></i></button>
-
-                                  </div>
-                                  <div *ngIf="passwordError" class="alert alert-danger mt-1" role="alert">
-                                    {{ passwordError }}
-                                  </div>
-                                </div>
-
-
-                                <div class="mb-3">
-                                  <label class="form-label">Mobile Number <span class="text-danger">*</span></label>
-                                  <div dropdown class="input-group">
-                                    <button dropdownToggle class="btn btn-light border" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                      <img src="{{selectedCountry.flagImg}}" alt="flag img" height="20" class="country-flagimg rounded">
-                                      <span class="ms-2 country-codeno">{{selectedCountry.countryCode}}</span>
-                                    </button>
-                                    <input type="text" class="form-control rounded-end flag-input" placeholder="Enter number" required formControlName="mobileNumber" [ngClass]="{ 'is-invalid': submitted && f['mobileNumber'].errors }">
-                                    <div *bsDropdownMenu class="dropdown-menu w-100 country-dropdown">
-                                      <div class="p-2 px-3 pt-1 searchlist-input">
-                                        <input type="text" class="form-control form-control-sm border search-countryList" placeholder="Search country name or country code..." (input)="onSearchChange($event)" (click)="$event.stopPropagation()" />                                      </div>
-                                      <ul class="list-unstyled dropdown-menu-list mb-0">
-                                        <li *ngFor="let data of Default" class="dropdown-item d-flex cursor-pointer" (click)="selectValue(data)">
-                                          <div class="flex-shrink-0 me-2"><img src="{{data.flagImg}}" alt="country flag" class="options-flagimg" height="20"></div>
-                                          <div class="flex-grow-1">
-                                            <div class="d-flex">
-                                              <div class="country-name me-1">{{data.countryName}}</div><span class="countrylist-codeno text-muted">{{data.countryCode}}</span>
-                                            </div>
-                                          </div>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                  <div class="invalid-feedback">
-                                    Please enter your mobile number
-                                  </div>
-                                </div>
-
-                                <div class=" mb-3">
-                                  <label for="profession" class="form-label">Profession <span class="text-danger">*</span></label>
-                                  <input type="text" class="form-control" id="profession" placeholder="Enter profession" required formControlName="profession" [ngClass]="{ 'is-invalid': submitted && f['profession'].errors }">
-                                  <div *ngIf="professionError" class="alert alert-danger mt-1" role="alert">
-                                    {{ professionError }}
-                                  </div>
-                                </div>
-
-                                <div class="mb-4">
-                                  <p class="mb-0 fs-xs text-muted fst-italic">By registering you agree to the Steex <a routerLink="/pages/term-conditions" class="text-primary text-decoration-underline fst-normal fw-medium">Terms of Use</a></p>
-                                </div>
-
-                                <div class="mt-4">
-                                  <button class="btn btn-primary w-100" type="submit">Sign Up</button>
-                                </div>
-
-                                <div class="mt-4 text-center">
-                                  <div class="signin-other-title position-relative">
-                                    <h5 class="fs-sm mb-4 title text-muted">Create account with</h5>
-                                  </div>
-
-                                  <div class="pt-2 hstack gap-2 justify-content-center">
-                                    <button type="button" class="btn btn-subtle-primary btn-icon"><i class="ri-facebook-fill fs-lg"></i></button>
-                                    <button type="button"  class="btn btn-subtle-danger btn-icon"><i class="ri-google-fill fs-lg"></i></button>
-                                    <button type="button" class="btn btn-subtle-dark btn-icon"><i class="ri-github-fill fs-lg"></i></button>
-                                    <button type="button" class="btn btn-subtle-info btn-icon"><i class="ri-twitter-fill fs-lg"></i></button>
-                                  </div>
-                                </div>
-                              </form>
-                            </div>
-                            <div class="mt-4 text-center">
-                              <p class="mb-0">Already have an account ? <a routerLink="/auth/login" class="fw-semibold text-primary text-decoration-underline"> Signin </a> </p>
-                            </div>
-                          </div>
-                          <div *ngIf="!showCard && role === 'company'" class="card-body p-sm-5 m-lg-4">
-                            <div class="text-center mt-2">
-                              <h5 class="fs-3xl">Create your free account</h5>
-                              <p class="text-muted">Get your free Steex account now</p>
-                            </div>
-                            <div class="p-2 mt-5">
-                              <form [formGroup]="signupForm" (ngSubmit)="onSubmitCompnay()" class="needs-validation" novalidate action="index.html">
-
-                                <div class="row">
-                                  <div class="col-md-6 mb-3">
-                                    <label for="firstName" class="form-label">Company Name <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="Enter company name" required formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }">
-                                    <div *ngIf="firstNameError" class="alert alert-danger mt-1" role="alert">
-                                      {{ firstNameError }}
-                                    </div>
-                                  </div>
-
-                                  <div class="col-md-6 mb-3">
-                                    <label for="lastName" class="form-label">Company Adress <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="Enter Company adress" required formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
-                                    <div *ngIf="lastNameError" class="alert alert-danger mt-1" role="alert">
-                                      {{ lastNameError }}
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div class="mb-3">
-                                  <label for="useremail" class="form-label">Email <span class="text-danger">*</span></label>
-                                  <input type="email" class="form-control" id="useremail" placeholder="Enter email address" required formControlName="email" [ngClass]="{ 'is-invalid': submitted && !f['password'].errors }">
-                                  <div *ngIf="emailError" class="alert alert-danger mt-1" role="alert">
-                                    {{ emailError }}
-                                  </div>
-
-                                </div>
-
-                                <div class="mb-3">
-                                  <label class="form-label" for="password-input">Password <span class="text-danger">*</span></label>
-
-                                  <div class="position-relative auth-pass-inputgroup">
-
-                                    <input [type]="fieldTextType ? 'text' : 'password'" class="form-control password-input pe-5" placeholder="Enter password" id="password-input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors}">
-
-                                    <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle" [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType
-                            }" (click)="toggleFieldTextType()"></i></button>
-
-                                  </div>
-                                  <div *ngIf="passwordError" class="alert alert-danger mt-1" role="alert">
-                                    {{ passwordError }}
-                                  </div>
-                                </div>
-
-
-                                <div class="mb-3">
-                                  <label class="form-label">Mobile Number <span class="text-danger">*</span></label>
-                                  <div dropdown class="input-group">
-                                    <button dropdownToggle class="btn btn-light border" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                      <img src="{{selectedCountry.flagImg}}" alt="flag img" height="20" class="country-flagimg rounded">
-                                      <span class="ms-2 country-codeno">{{selectedCountry.countryCode}}</span>
-                                    </button>
-                                    <input type="text" class="form-control rounded-end flag-input" placeholder="Enter number" required formControlName="mobileNumber" [ngClass]="{ 'is-invalid': submitted && f['mobileNumber'].errors }">
-                                    <div *bsDropdownMenu class="dropdown-menu w-100 country-dropdown">
-                                      <div class="p-2 px-3 pt-1 searchlist-input">
-                                        <input type="text" class="form-control form-control-sm border search-countryList" placeholder="Search country name or country code..." (input)="onSearchChange($event)" (click)="$event.stopPropagation()" />                                      </div>
-                                      <ul class="list-unstyled dropdown-menu-list mb-0">
-                                        <li *ngFor="let data of Default" class="dropdown-item d-flex cursor-pointer" (click)="selectValue(data)">
-                                          <div class="flex-shrink-0 me-2"><img src="{{data.flagImg}}" alt="country flag" class="options-flagimg" height="20"></div>
-                                          <div class="flex-grow-1">
-                                            <div class="d-flex">
-                                              <div class="country-name me-1">{{data.countryName}}</div><span class="countrylist-codeno text-muted">{{data.countryCode}}</span>
-                                            </div>
-                                          </div>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                  <div class="invalid-feedback">
-                                    Please enter your mobile number
-                                  </div>
-                                </div>
-
-                                <div class=" mb-3">
-                                  <label for="profession" class="form-label">Profession <span class="text-danger">*</span></label>
-                                  <input type="text" class="form-control" id="profession" placeholder="Enter profession" required formControlName="profession" [ngClass]="{ 'is-invalid': submitted && f['profession'].errors }">
-                                  <div *ngIf="professionError" class="alert alert-danger mt-1" role="alert">
-                                    {{ professionError }}
-                                  </div>
-                                </div>
-
-                                <div class="mb-4">
-                                  <p class="mb-0 fs-xs text-muted fst-italic">By registering you agree to the Steex <a routerLink="/pages/term-conditions" class="text-primary text-decoration-underline fst-normal fw-medium">Terms of Use</a></p>
-                                </div>
-
-                                <div class="mt-4">
-                                  <button class="btn btn-primary w-100" type="submit">Sign Up</button>
-                                </div>
-
-                                <div class="mt-4 text-center">
-                                  <div class="signin-other-title position-relative">
-                                    <h5 class="fs-sm mb-4 title text-muted">Create account with</h5>
-                                  </div>
-
-                                  <div class="pt-2 hstack gap-2 justify-content-center">
-                                    <button type="button" class="btn btn-subtle-primary btn-icon"><i class="ri-facebook-fill fs-lg"></i></button>
-                                    <button type="button"  class="btn btn-subtle-danger btn-icon"><i class="ri-google-fill fs-lg"></i></button>
-                                    <button type="button" class="btn btn-subtle-dark btn-icon"><i class="ri-github-fill fs-lg"></i></button>
-                                    <button type="button" class="btn btn-subtle-info btn-icon"><i class="ri-twitter-fill fs-lg"></i></button>
-                                  </div>
-                                </div>
-                              </form>
-                            </div>
-                            <div class="mt-4 text-center">
-                              <p class="mb-0">Already have an account ? <a routerLink="/auth/login" class="fw-semibold text-primary text-decoration-underline"> Signin </a> </p>
-                            </div>
-                          </div><!-- end card body -->
+                           </div>
+                         
+                       
                             </div><!-- end card -->
                         </div>
                         <!--end col-->

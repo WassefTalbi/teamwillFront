@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit{
           console.log(response);
           if (this.authService.currentUser()['scope'] === 'ADMIN') {
             this.router.navigate(['/tickets/home']);
-          } else if (this.authService.currentUser()['scope'] === 'USER') {
+          } else if (this.authService.currentUser()['scope'] === 'CONDIDAT') {
             this.router.navigate(['/User']);
           } else if (this.authService.currentUser()['scope'] === 'STAFF') {
             this.router.navigate(['/Staff']);

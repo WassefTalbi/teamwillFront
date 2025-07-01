@@ -4,9 +4,9 @@ export const MENU1 = {
   clientMenu: [
     {
       id: 23,
-      label: 'MENUITEMS.APPS.LIST.FILEMANAGER',
+      label: 'Accuiel',
       icon: 'ph-folder-open',
-      link: '/apps/file-manager',
+      link: 'tickets/home',
       parentId: 8,
     },
     {
